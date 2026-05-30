@@ -1,10 +1,11 @@
-package com.solvd.smarthome;
+package com.solvd.smarthome.domain;
 
 import java.util.List;
 
 public class SmartHome {
     private Long id;
     private String address;
+    private Long ownerId;
     private Owner owner;
     private List<Room> rooms;
 
@@ -13,6 +14,9 @@ public class SmartHome {
 
     public String getAddress() { return address; }
     public void setAddress(String address) { this.address = address; }
+
+    public Long getOwnerId() { return ownerId; }
+    public void setOwnerId(Long ownerId) { this.ownerId = ownerId; }
 
     public Owner getOwner() { return owner; }
     public void setOwner(Owner owner) { this.owner = owner; }

@@ -1,4 +1,4 @@
-package com.solvd.smarthome;
+package com.solvd.smarthome.domain;
 
 import java.time.LocalDateTime;
 
@@ -8,6 +8,7 @@ public class Device {
     private String model;
     private boolean isOnline;
     private LocalDateTime installedAt;
+    private Long roomId;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
@@ -23,4 +24,7 @@ public class Device {
 
     public LocalDateTime getInstalledAt() { return installedAt; }
     public void setInstalledAt(LocalDateTime installedAt) { this.installedAt = installedAt; }
+
+    public Long getRoomId() { return roomId; }
+    public void setRoomId(Long roomId) { this.roomId = roomId; }
 }

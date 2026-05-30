@@ -1,24 +1,33 @@
 package com.solvd;
 
-import com.solvd.smarthome.*;
+import com.solvd.smarthome.domain.Owner;
+import com.solvd.smarthome.domain.SmartHome;
+import com.solvd.smarthome.domain.Room;
+import com.solvd.smarthome.service.OwnerService;
+import com.solvd.smarthome.service.SmartHomeService;
+import com.solvd.smarthome.service.RoomService;
+import com.solvd.smarthome.service.impl.OwnerServiceImpl;
+import com.solvd.smarthome.service.impl.SmartHomeServiceImpl;
+import com.solvd.smarthome.service.impl.RoomServiceImpl;
+
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-        Owner owner = new Owner();
-        owner.setFirstName("John");
-        owner.setLastName("Doe");
-        owner.setEmail("john@example.com");
+        OwnerService ownerService = new OwnerServiceImpl();
+        SmartHomeService smartHomeService = new SmartHomeServiceImpl();
+        RoomService roomService = new RoomServiceImpl();
 
-        SmartHome home = new SmartHome();
-        home.setAddress("123 Main St");
-        home.setOwner(owner);
+        // Получить всех владельцев из БД
+        List<Owner> owners = ownerService.findAll();
+        owners.forEach(o -> System.out.println("Owner: " + o.getFirstName() + " " + o.getLastName()));
 
-        Room livingRoom = new Room();
-        livingRoom.setName("Living Room");
-        livingRoom.setAreaSqMeters(25.5);
+        // Получить все дома из БД
+        List<SmartHome> homes = smartHomeService.findAll();
+        homes.forEach(h -> System.out.println("Home: " + h.getAddress()));
 
-        Thermostat thermostat = new Thermostat();
-        thermostat.setTargetTemperature(22.0);
-        thermostat.performAction();
+        // Получить все комнаты из БД
+        List<Room> rooms = roomService.findAll();
+        rooms.forEach(r -> System.out.println("Room: " + r.getName()));
     }
 }

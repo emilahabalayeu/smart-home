@@ -1,4 +1,4 @@
-package com.solvd.smarthome;
+package com.solvd.smarthome.domain;
 
 public class SmartLock {
     private Long id;

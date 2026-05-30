@@ -1,4 +1,4 @@
-package com.solvd.smarthome;
+package com.solvd.smarthome.domain;
 
 import java.time.LocalDate;
 
