@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.smarthome.persistence.RoomRepository">
+
+    <select id="findAll" resultType="Room">
+        SELECT * FROM rooms
+    </select>
+
+    <select id="findById" resultType="Room" parameterType="Long">
+        SELECT * FROM rooms WHERE id = #{id}
+    </select>
+
+    <insert id="create" parameterType="Room" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO rooms (name, area_sq_meters, smart_home_id)
+        VALUES (#{name}, #{areaSqMeters}, #{smartHomeId})
+    </insert>
+
+    <update id="update" parameterType="Room">
+        UPDATE rooms SET
+        name = #{name},
+        area_sq_meters = #{areaSqMeters},
+        smart_home_id = #{smartHomeId}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM rooms WHERE id = #{id}
+    </delete>
+
+</mapper>

@@ -2,14 +2,14 @@ package com.solvd.smarthome.service.impl;
 
 import com.solvd.smarthome.domain.Device;
 import com.solvd.smarthome.persistence.DeviceRepository;
-import com.solvd.smarthome.persistence.impl.DeviceRepositoryImpl;
+import com.solvd.smarthome.persistence.impl.DeviceMapperImpl;
 import com.solvd.smarthome.service.DeviceService;
 
 import java.util.List;
 
 public class DeviceServiceImpl implements DeviceService {
 
-    private final DeviceRepository deviceRepository = new DeviceRepositoryImpl();
+    private final DeviceRepository deviceRepository = new DeviceMapperImpl();
 
     @Override
     public Device create(Device device) {

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.smarthome.persistence.DeviceRepository">
+
+    <select id="findAll" resultType="Device">
+        SELECT * FROM devices
+    </select>
+
+    <select id="findById" resultType="Device" parameterType="Long">
+        SELECT * FROM devices WHERE id = #{id}
+    </select>
+
+    <select id="findByRoomId" resultType="Device" parameterType="Long">
+        SELECT * FROM devices WHERE room_id = #{roomId}
+    </select>
+
+    <insert id="create" parameterType="Device" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO devices (name, model, is_online, installed_at, room_id)
+        VALUES (#{name}, #{model}, #{online}, #{installedAt}, #{roomId})
+    </insert>
+
+    <update id="update" parameterType="Device">
+        UPDATE devices SET
+        name = #{name},
+        model = #{model},
+        is_online = #{online},
+        installed_at = #{installedAt},
+        room_id = #{roomId}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM devices WHERE id = #{id}
+    </delete>
+
+</mapper>

@@ -2,14 +2,14 @@ package com.solvd.smarthome.service.impl;
 
 import com.solvd.smarthome.domain.DeviceLog;
 import com.solvd.smarthome.persistence.DeviceLogRepository;
-import com.solvd.smarthome.persistence.impl.DeviceLogRepositoryImpl;
+import com.solvd.smarthome.persistence.impl.DeviceLogMapperImpl;
 import com.solvd.smarthome.service.DeviceLogService;
 
 import java.util.List;
 
 public class DeviceLogServiceImpl implements DeviceLogService {
 
-    private final DeviceLogRepository deviceLogRepository = new DeviceLogRepositoryImpl();
+    private final DeviceLogRepository deviceLogRepository = new DeviceLogMapperImpl();
 
     @Override
     public DeviceLog create(DeviceLog deviceLog) {

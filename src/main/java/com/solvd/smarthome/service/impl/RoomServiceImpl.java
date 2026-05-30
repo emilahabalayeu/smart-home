@@ -2,14 +2,14 @@ package com.solvd.smarthome.service.impl;
 
 import com.solvd.smarthome.domain.Room;
 import com.solvd.smarthome.persistence.RoomRepository;
-import com.solvd.smarthome.persistence.impl.RoomRepositoryImpl;
+import com.solvd.smarthome.persistence.impl.RoomMapperImpl;
 import com.solvd.smarthome.service.RoomService;
 
 import java.util.List;
 
 public class RoomServiceImpl implements RoomService {
 
-    private final RoomRepository roomRepository = new RoomRepositoryImpl();
+    private final RoomRepository roomRepository = new RoomMapperImpl();
 
     @Override
     public Room create(Room room) {

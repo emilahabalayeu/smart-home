@@ -2,14 +2,14 @@ package com.solvd.smarthome.service.impl;
 
 import com.solvd.smarthome.domain.SmartHome;
 import com.solvd.smarthome.persistence.SmartHomeRepository;
-import com.solvd.smarthome.persistence.impl.SmartHomeRepositoryImpl;
+import com.solvd.smarthome.persistence.impl.SmartHomeMapperImpl;
 import com.solvd.smarthome.service.SmartHomeService;
 
 import java.util.List;
 
 public class SmartHomeServiceImpl implements SmartHomeService {
 
-    private final SmartHomeRepository smartHomeRepository = new SmartHomeRepositoryImpl();
+    private final SmartHomeRepository smartHomeRepository = new SmartHomeMapperImpl();
 
     @Override
     public SmartHome create(SmartHome smartHome) {

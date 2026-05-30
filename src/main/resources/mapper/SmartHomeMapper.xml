@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.smarthome.persistence.SmartHomeRepository">
+
+    <select id="findAll" resultType="SmartHome">
+        SELECT * FROM smart_homes
+    </select>
+
+    <select id="findById" resultType="SmartHome" parameterType="Long">
+        SELECT * FROM smart_homes WHERE id = #{id}
+    </select>
+
+    <select id="findByOwnerId" resultType="SmartHome" parameterType="Long">
+        SELECT * FROM smart_homes WHERE owner_id = #{ownerId}
+    </select>
+
+    <select id="findAllWithDetails" resultType="SmartHome">
+        SELECT sh.id, sh.address, sh.owner_id
+        FROM smart_homes sh
+        JOIN owners o ON sh.owner_id = o.id
+        LEFT JOIN rooms r ON r.smart_home_id = sh.id
+        LEFT JOIN devices d ON d.room_id = r.id
+        LEFT JOIN device_logs dl ON dl.device_id = d.id
+        LEFT JOIN schedules sc ON sc.device_id = d.id
+    </select>
+
+    <insert id="create" parameterType="SmartHome" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO smart_homes (address, owner_id)
+        VALUES (#{address}, #{ownerId})
+    </insert>
+
+    <update id="update" parameterType="SmartHome">
+        UPDATE smart_homes SET
+        address = #{address},
+        owner_id = #{ownerId}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM smart_homes WHERE id = #{id}
+    </delete>
+
+</mapper>

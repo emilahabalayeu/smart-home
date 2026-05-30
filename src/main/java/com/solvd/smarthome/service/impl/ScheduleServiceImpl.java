@@ -2,14 +2,14 @@ package com.solvd.smarthome.service.impl;
 
 import com.solvd.smarthome.domain.Schedule;
 import com.solvd.smarthome.persistence.ScheduleRepository;
-import com.solvd.smarthome.persistence.impl.ScheduleRepositoryImpl;
+import com.solvd.smarthome.persistence.impl.ScheduleMapperImpl;
 import com.solvd.smarthome.service.ScheduleService;
 
 import java.util.List;
 
 public class ScheduleServiceImpl implements ScheduleService {
 
-    private final ScheduleRepository scheduleRepository = new ScheduleRepositoryImpl();
+    private final ScheduleRepository scheduleRepository = new ScheduleMapperImpl();
 
     @Override
     public Schedule create(Schedule schedule) {

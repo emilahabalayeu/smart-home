@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.smarthome.persistence.OwnerRepository">
+
+    <resultMap id="OwnerResultMap" type="Owner">
+        <id property="id" column="id"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+        <result property="birthDate" column="birth_date"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="OwnerResultMap">
+        SELECT * FROM owners
+    </select>
+
+    <select id="findById" resultMap="OwnerResultMap" parameterType="Long">
+        SELECT * FROM owners WHERE id = #{id}
+    </select>
+
+    <insert id="create" parameterType="Owner" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO owners (first_name, last_name, email, phone, birth_date)
+        VALUES (#{firstName}, #{lastName}, #{email}, #{phone}, #{birthDate})
+    </insert>
+
+    <update id="update" parameterType="Owner">
+        UPDATE owners SET
+        first_name = #{firstName},
+        last_name = #{lastName},
+        email = #{email},
+        phone = #{phone},
+        birth_date = #{birthDate}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM owners WHERE id = #{id}
+    </delete>
+
+</mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.smarthome.persistence.ScheduleRepository">
+
+    <select id="findAll" resultType="Schedule">
+        SELECT * FROM schedules
+    </select>
+
+    <select id="findById" resultType="Schedule" parameterType="Long">
+        SELECT * FROM schedules WHERE id = #{id}
+    </select>
+
+    <select id="findByDeviceId" resultType="Schedule" parameterType="Long">
+        SELECT * FROM schedules WHERE device_id = #{deviceId}
+    </select>
+
+    <insert id="create" parameterType="Schedule" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO schedules (turn_on_time, turn_off_time, start_date, is_active, device_id)
+        VALUES (#{turnOnTime}, #{turnOffTime}, #{startDate}, #{active}, #{deviceId})
+    </insert>
+
+    <update id="update" parameterType="Schedule">
+        UPDATE schedules SET
+        turn_on_time = #{turnOnTime},
+        turn_off_time = #{turnOffTime},
+        start_date = #{startDate},
+        is_active = #{active},
+        device_id = #{deviceId}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM schedules WHERE id = #{id}
+    </delete>
+
+</mapper>
