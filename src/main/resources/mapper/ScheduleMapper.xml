@@ -4,15 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.solvd.smarthome.persistence.ScheduleRepository">
 
-    <select id="findAll" resultType="Schedule">
+    <resultMap id="ScheduleResultMap" type="Schedule">
+        <id property="id" column="id"/>
+        <result property="turnOnTime" column="turn_on_time"/>
+        <result property="turnOffTime" column="turn_off_time"/>
+        <result property="startDate" column="start_date"/>
+        <result property="active" column="is_active"/>
+        <result property="deviceId" column="device_id"/>
+    </resultMap>
+
+    <select id="findAll" resultMap="ScheduleResultMap">
         SELECT * FROM schedules
     </select>
 
-    <select id="findById" resultType="Schedule" parameterType="Long">
+    <select id="findById" resultMap="ScheduleResultMap" parameterType="Long">
         SELECT * FROM schedules WHERE id = #{id}
     </select>
 
-    <select id="findByDeviceId" resultType="Schedule" parameterType="Long">
+    <select id="findByDeviceId" resultMap="ScheduleResultMap" parameterType="Long">
         SELECT * FROM schedules WHERE device_id = #{deviceId}
     </select>
 

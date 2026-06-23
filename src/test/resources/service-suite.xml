@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="ServiceTestSuite">
+    <listeners>
+        <listener class-name="com.solvd.smarthome.service.TestListener"/>
+    </listeners>
+    <test name="OwnerServiceTests">
+        <classes>
+            <class name="com.solvd.smarthome.service.OwnerServiceTest"/>
+        </classes>
+    </test>
+    <test name="RoomServiceTests">
+        <classes>
+            <class name="com.solvd.smarthome.service.RoomServiceTest"/>
+        </classes>
+    </test>
+    <test name="DeviceServiceTests">
+        <classes>
+            <class name="com.solvd.smarthome.service.DeviceServiceTest"/>
+        </classes>
+    </test>
+</suite>
